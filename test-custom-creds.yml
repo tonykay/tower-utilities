@@ -1,0 +1,34 @@
+---
+- name: Test custom creds are behaving correctly
+  hosts: localhost
+  gather_facts: false
+  become: false
+
+  tasks:
+
+    - name: 'DEBUG: Custom creds'
+      debug:
+        msg:
+          - "scormcloud_api_key is          {{ scormcloud_api_key }}"
+          - "scormcloud_api_secret is       {{ scormcloud_api_secret }}"
+          - "scormcloud_auth_composite is   {{ scormcloud_auth_composite }}"
+          - "scormcloud_api_auth            {{ scormcloud_api_auth }}"
+
+#- name: Call SCORMCloud API
+#  uri:
+#    url:                "{{ scormcloud_api_endpoint }}"
+#    method:             "{{ scormcloud_api_method | default('POST') }}"
+#    body_format:        "{{ scormcloud_api_body_format | default('json') }}"
+#    body:               "{{ scormcloud_api_body }}"
+#    return_content:     yes
+#    headers:
+#      Authorization: "Basic {{ scormcloud_api_auth }}"
+#      X-Experience-API-Version: 1.0.1
+#      Content-Type: application/json
+#  register: r_scormcloud_api_call
+#
+#- name: 'DEBUG: Output SCORMCloud Response'
+#  debug:
+#    var:          r_scormcloud_api_call
+#    verbosity:    2
+#...
