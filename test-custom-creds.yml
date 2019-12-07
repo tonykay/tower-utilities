@@ -3,6 +3,10 @@
   hosts: localhost
   gather_facts: false
   become: false
+  vars:
+    scormcloud_auth_composite:    "{{ scormcloud_api_key }}:{{ scormcloud_api_secret }}"
+    scormcloud_api_auth:          "{{ scormcloud_auth_composite | b64encode }}"
+
 
   tasks:
 
